@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="text-center">Create a New Blog Post</h1>
+            <form action="{% url 'blogapp:submit' %}" method="post">
+                {% csrf_token %}
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title" required><br><br>
+
+                <label for="content">Content:</label><br>
+                <textarea id="content" name="content" rows="8" cols="80" required></textarea><br><br>
+
+                <input type="submit" value="Publish">
+            </form>
+            <br>
+
+            {% for msg in messages %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

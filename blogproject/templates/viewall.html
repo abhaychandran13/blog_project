@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="text-center">All Blog Posts</h1>
+
+            <hr>
+            <ul class="list-group">
+                {% for post in posts %}
+                <li class="list-group-item">
+                    <h2><a href="{% url 'blogapp:post_detail' post.id %}">{{ post.title }}</a></h2>
+                    <p>Published by <b style="color:Blue">{{ post.author }}</b> on {{ post.pub_date }}</p>
+                    <p class="content">{{ post.content }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock %}

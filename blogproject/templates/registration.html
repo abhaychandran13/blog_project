@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        form {
+            margin: 0 auto;
+            max-width: 300px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            margin: 5px 0;
+            padding: 10px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h3>Create a new account</h3>
+
+    <form action="{% url 'blogapp:register' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username"><br>
+        <input type="text" name="first_name" placeholder="First Name"><br>
+        <input type="text" name="last_name" placeholder="Last Name"><br>
+        <input type="email" name="email" placeholder="Email"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <input type="password" name="password1" placeholder="Confirm password"><br>
+        <input type="submit" value="Sign Up"><br>
+    </form>
+
+    {% for msg in messages %}
+    {{ msg }}
+    {% endfor %}
+</body>
+</html>
